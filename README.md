@@ -11,7 +11,9 @@ This project demonstrates a simple multi-container application using **Docker Co
 
 From the root of your repo (multi-container-app/):
 
-docker-compose up --build
+docker-compose build --no-cache
+docker-compose up
+
 
 
 What happens:
