@@ -14,8 +14,8 @@ services:
       - DB_NAME=myappdb
     deploy:
       replicas: 2   # scaling web app
-      restart_policy:
-        condition: always
+    restart: always
+        
 
   db:
     image: mysql:8.0
