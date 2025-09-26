@@ -8,3 +8,7 @@ This project demonstrates a simple multi-container application using **Docker Co
 
 ```bash
 docker-compose up --build
+docker-compose up --scale web=3 -d
+
+
+This runs 3 replicas of the web app.
