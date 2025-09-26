@@ -9,7 +9,7 @@ This project demonstrates a simple multi-container application using **Docker Co
 ```bash
 🔹 1. Build & Start Containers
 
-From the root of your repo (multi-container-app/):
+From the root of your repo (dockercompose/):
 
 docker-compose build --no-cache
 docker-compose up
