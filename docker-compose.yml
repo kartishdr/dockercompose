@@ -3,8 +3,8 @@ version: "3.9"
 services:
   web:
     build: ./webapp
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"    # internal only, no host binding
     depends_on:
       - db
     environment:
@@ -12,10 +12,9 @@ services:
       - DB_USER=root
       - DB_PASSWORD=rootpassword
       - DB_NAME=myappdb
-    deploy:
-      replicas: 2   # scaling web app
     restart: always
-        
+    deploy:
+      replicas: 2
 
   db:
     image: mysql:8.0
