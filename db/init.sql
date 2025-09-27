@@ -1,6 +1,7 @@
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS greetings (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100)
+    message VARCHAR(255) NOT NULL
 );
 
-INSERT INTO users (name) VALUES ('Alice'), ('Bob'), ('Charlie');
+INSERT INTO greetings (message) VALUES ("Hello from MySQL + Flask + Docker!");
+
