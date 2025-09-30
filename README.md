@@ -44,6 +44,15 @@ Creating dockercompose_nginx_1 ... done
 dockercompose$ ls
 1  db  docker-compose.yml  nginx.conf  README.md  webapp
 
+✅ At this point:
+
+Nginx should start correctly
+
+Host port 5000 → Nginx → Flask containers
+
+You can open http://localhost:5000
+
+
 
 for testing 
 
