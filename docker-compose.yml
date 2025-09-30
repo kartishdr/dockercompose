@@ -4,7 +4,7 @@ services:
   web:
     build: ./webapp
     expose:
-      - "8080"
+      - "8080"   # internal port for Flask
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -12,19 +12,20 @@ services:
       - DB_NAME=myappdb
     depends_on:
       - db
+    deploy:
+      replicas: 2
 
   db:
-  image: mysql:8.0
-  restart: always
-  environment:
-    MYSQL_ROOT_PASSWORD: rootpassword
-    MYSQL_DATABASE: myappdb
-  volumes:
-    - db_data:/var/lib/mysql
-    - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-  ports:
-    - "3306:3306"
-
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: myappdb
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
 
   nginx:
     image: nginx:alpine
@@ -37,6 +38,7 @@ services:
 
 volumes:
   db_data:
+
 
 
 
