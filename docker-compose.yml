@@ -3,8 +3,8 @@ version: "3.9"
 services:
   web:
     build: ./webapp
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"   # internal port for Flask
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -13,22 +13,28 @@ services:
     depends_on:
       - db
     deploy:
-      replicas: 2   # scale web app
-      restart_policy:
-        condition: always
+      replicas: 2
 
   db:
     image: mysql:8.0
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: myappdb
     volumes:
       - db_data:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "5000:80"   # <--- changed from 8080 to 5000
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
 
 volumes:
   db_data:
+
 
 
 
