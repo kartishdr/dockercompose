@@ -6,20 +6,6 @@ This project demonstrates a simple multi-container setup using **Docker Compose*
 
 ## Run the project
 
-```bash
-docker-compose up --build
-Access the app:
- http://localhost:8080
-
-Scaling the Web App
-bash
-Copy code
-docker-compose up --build --scale web=3
-This will start 3 replicas of the web app behind Docker's internal load balancer.
-
-yaml
-Copy code
-
 ---
 
 #  How to Test
@@ -55,14 +41,25 @@ Creating dockercompose_db_1 ... done
 Creating dockercompose_web_1 ... done
 Creating dockercompose_web_2 ... done
 Creating dockercompose_nginx_1 ... done
-anu@kartish-HP-EliteBook-Folio-9480m:~/dockercompose$ ls
+dockercompose$ ls
 1  db  docker-compose.yml  nginx.conf  README.md  webapp
-anu@kartish-HP-EliteBook-Folio-9480m:~/dockercompose$ vi docker-compose.yml 
-anu@kartish-HP-EliteBook-Folio-9480m:~/dockercompose$ docker-compose up -d --scale web=4
+
+
+for testing 
+
+ docker-compose up -d --scale web=4
 Starting dockercompose_db_1 ... done
 Creating dockercompose_web_3 ... done
 Creating dockercompose_web_4 ... done
 dockercompose_nginx_1 is up-to-date
-anu@kartish-HP-EliteBook-Folio-9480m:~/dockercompose$ vi docker-compose.yml 
-anu@kartish-HP-EliteBook-Folio-9480m:~/dockercompose$ 
+
+docker-compose ps
+        Name                       Command               State                   Ports                
+------------------------------------------------------------------------------------------------------
+dockercompose_db_1      docker-entrypoint.sh mysqld      Exit 1                                       
+dockercompose_nginx_1   /docker-entrypoint.sh ngin ...   Up       0.0.0.0:5000->80/tcp,:::5000->80/tcp
+dockercompose_web_1     python app.py                    Up       8080/tcp                            
+dockercompose_web_2     python app.py                    Up       8080/tcp                            
+dockercompose_web_3     python app.py                    Up       8080/tcp                            
+dockercompose_web_4     python app.py                    Up       8080/tcp   
 
