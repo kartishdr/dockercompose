@@ -11,8 +11,9 @@ This project demonstrates a simple multi-container setup using **Docker Compose*
 #  How to Test
 1. Clone repo:
    ```bash
-   git clone https://github.com/<your-username>/multi-container-app.git
-   cd multi-container-app
+   git clone 
+   cd dockercompose 
+
 Build & run:
 docker-compose up --build -d
 Creating network "dockercompose_default" with the default driver
@@ -41,8 +42,6 @@ Creating dockercompose_db_1 ... done
 Creating dockercompose_web_1 ... done
 Creating dockercompose_web_2 ... done
 Creating dockercompose_nginx_1 ... done
-dockercompose$ ls
-1  db  docker-compose.yml  nginx.conf  README.md  webapp
 
 ✅ At this point:
 
